@@ -3,30 +3,30 @@
         <?php include "header.php" ?>
 
         <!-- MAIN CONTENT -->
-        <div class="wrapper">
-            <section class="index-intro">
+        <section class="index-intro">
+            <div class="index-intro-bg">
                 <h1>This is an Instruction</h1>
                 <p>This is an important paragraph explaining the purpose of the website</p>
-            </section>
+            </div>
+        </section>
 
-            <section class="index-categories">
-                <h2>Some Basic Categories</h2>
-                <div class="index-categories-list">
-                    <div>
-                        <h3>Fun Stuff</h3>
-                    </div>
-                    <div>
-                        <h3>Exciting Stuff</h3>
-                    </div>
-                    <div>
-                        <h3>Stupid Stuff</h3>
-                    </div>
-                    <div>
-                        <h3>Serious Stuff</h3>
-                    </div>
+        <section class="index-categories">
+            <h2>Some Basic Categories</h2>
+            <div class="index-categories-list">
+                <div>
+                    <h3>Fun Stuff</h3>
                 </div>
-            </section>
-        </div>
+                <div>
+                    <h3>Exciting Stuff</h3>
+                </div>
+                <div>
+                    <h3>Stupid Stuff</h3>
+                </div>
+                <div>
+                    <h3>Serious Stuff</h3>
+                </div>
+            </div>
+        </section>
 
 
 

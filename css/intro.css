@@ -1,0 +1,16 @@
+.index-intro {
+    height: 50vh;
+    width: 100%;
+    font-size: 1.5rem;
+}
+
+.index-intro-bg {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url("../img/vergil-bg.jpg") center no-repeat;
+    background-size: cover;
+}
