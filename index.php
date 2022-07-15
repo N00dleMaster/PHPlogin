@@ -15,7 +15,7 @@
             <h2>Some Basic Categories</h2>
             <div>
                 <!-- Sign up form -->
-                <form class="index-forms-signup form" action="signup.php" method="post">
+                <form class="index-forms-signup form" action="includes/signup.inc.php" method="post">
                     <h3>Sign Up</h3>
                     <input type="text" name="username" placeholder="Username">
                     <input type="text" name="password" placeholder="Password">
@@ -25,7 +25,7 @@
                     <button type="submit" value="submit">SIGN UP</button>
                 </form>
                 <!-- Log in form -->
-                <form class="index-forms-login form" action="login.php" method="post">
+                <form class="index-forms-login form" action="includes/login.inc.php" method="post">
                     <h3>Log in</h3>
                     <input type="text" name="username" placeholder="Username">
                     <input type="text" name="password" placeholder="Password">
