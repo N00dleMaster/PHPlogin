@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="css/global.css">
         <link rel="stylesheet" href="css/nav.css">
         <link rel="stylesheet" href="css/intro.css">
+        <link rel="stylesheet" href="css/forms.css">
     </head>
     <body>
         
