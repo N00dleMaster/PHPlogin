@@ -18,7 +18,6 @@ if(isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["passw
     $password = $_POST["password"];
     $passwordRepeat = $_POST["passwordRepeat"];
     $email = $_POST["email"];
-    Debug.print("username: " + $username);
 
     // Instantiate SignupControl class
     include "../classes/databasehandler.classes.php";
@@ -28,7 +27,6 @@ if(isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["passw
 
     // Running error handlers and user signup
     $signup->signupUser();
-    // Debug.print("Got here");
 
     // Redirecting back to front page
     header("location: ../index.php?error=none");

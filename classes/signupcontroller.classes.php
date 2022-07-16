@@ -2,7 +2,7 @@
 // SignupController is for changing surface level verification and stuff
 
 
-class SignupController {
+class SignupController extends Signup {
 
     // Properties
     private $username;
@@ -19,7 +19,7 @@ class SignupController {
     }
 
     // Ultimate error handler function, implements all the ones below
-    private function signupUser() {
+    public function signupUser() {
         if($this->emptyInput() == false) {
             header("location: ../index.php?error=emptyinput");
             exit(); // exits script
@@ -27,17 +27,17 @@ class SignupController {
             header("location: ../index.php?error=invalidusername");
             exit();
         } else if ($this->invalidEmail() == false) {
-            header("location: ../index.php?error=invalidusername");
+            header("location: ../index.php?error=email");
             exit();
         } else if ($this->passwordsMatch() == false) {
-            header("location: ../index.php?error=invalidusername");
+            header("location: ../index.php?error=passwordsmatch");
             exit();
-        } else if ($this->usernameTaken() == false) {
-            header("location: ../index.php?error=invalidusername");
+        } else if ($this->usernameTaken() == true) {
+            header("location: ../index.php?error=usernametaken");
             exit();
         }
 
-        $this->setUser($this->username, this->password, this->email); // in signup.classes.php because this is where we interact with the db
+        $this->setUser($this->username, $this->password, $this->email); // in signup.classes.php because this is where we interact with the db
     }
 
 
@@ -47,7 +47,7 @@ class SignupController {
         // Returns boolean value
     private function emptyInput() {
         $result;
-        if(empty(this->username) || empty(this->password) || empty(this->passwordRepeat) || empty(this->email)) { // empty() is a built in php func
+        if(empty($this->username) || empty($this->password) || empty($this->passwordRepeat) || empty($this->email)) { // empty() is a built in php func
             $result = false;
         } else {
             $result = true;
@@ -60,7 +60,7 @@ class SignupController {
         // only allows certain characters in username (verified using a regex)
     private function invalidUsername() {
         $result;
-        if(!preg_match("/^[a-zA-Z0-9]*$/", $this->username)) { // see docs for more info on preg_match
+        if(preg_match("/^[a-zA-Z0-9]*$/", $this->username)) { // see docs for more info on preg_match
             $result = true;
         } else {
             $result = false;
@@ -74,9 +74,9 @@ class SignupController {
     private function invalidEmail() {
         $result;
         if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-            $result = true;
-        } else {
             $result = false;
+        } else {
+            $result = true;
         }
         return $result;
     }

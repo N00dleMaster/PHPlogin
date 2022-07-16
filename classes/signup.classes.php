@@ -12,7 +12,7 @@ class Signup extends DBH {
         // This function is used by the SignupController class for user validation.
     protected function checkUser($username, $email) {
         // Use prepared statements to prevent SQL injection
-        $statement = this->connect()->prepare('SELECT username FROM users WHERE username=? OR email=?;'); // connect function is from dbh
+        $statement = $this->connect()->prepare('SELECT username FROM users WHERE username=? OR email=?;'); // connect function is from dbh
 
         // Execute prepared statement, replacing "?" with the variables we want to use (the variables must be entered in an array). Check for errors.
         // The statement returns true or false depending on whether or not it succeeded
@@ -31,7 +31,7 @@ class Signup extends DBH {
             $resultCheck = true;
         }
 
-        return resultCheck;
+        return $resultCheck;
     }
 
 
@@ -41,11 +41,11 @@ class Signup extends DBH {
         // This function is used by the SignupController class only after user validation
     protected function setUser($username, $password, $email) {
         // Make prepared statement
-        $statement = this->connect()->prepare('INSERT INTO users (username, password, email) VALUES (?, ?, ?);');
+        $statement = $this->connect()->prepare('INSERT INTO users (username, password, email) VALUES (?, ?, ?);');
         // Hash the password before inserting into db!
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT); // this func built into php
         // If statement fails
-        if(!statement->execute(array($username, $hashedPassword, $email))) {
+        if(!$statement->execute(array($username, $hashedPassword, $email))) {
             $statement = null;
             header("location: ../index.php?error=statementfailed");
             exit();
