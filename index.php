@@ -18,8 +18,8 @@
                 <form class="index-forms-signup form" action="includes/signup.inc.php" method="post">
                     <h3>Sign Up</h3>
                     <input type="text" name="username" placeholder="Username">
-                    <input type="text" name="password" placeholder="Password">
-                    <input type="text" name="passwordRepeat" placeholder="Re-enter Password">
+                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="passwordRepeat" placeholder="Re-enter Password">
                     <input type="text" name="email" placeholder="E-mail">
                     <br>
                     <button type="submit" value="submit">SIGN UP</button>
