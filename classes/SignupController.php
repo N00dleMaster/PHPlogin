@@ -37,7 +37,7 @@ class SignupController {
             exit();
         }
 
-        $this->setUser(); // in signup.classes.php because this is where we interact with the db
+        $this->setUser($this->username, this->password, this->email); // in signup.classes.php because this is where we interact with the db
     }
 
 
