@@ -22,7 +22,7 @@
                     <input type="password" name="passwordRepeat" placeholder="Re-enter Password">
                     <input type="text" name="email" placeholder="E-mail">
                     <br>
-                    <button type="submit" value="submit">SIGN UP</button>
+                    <button type="submit" name="submit">SIGN UP</button>
                 </form>
                 <!-- Log in form -->
                 <form class="index-forms-login form" action="includes/login.inc.php" method="post">
@@ -30,7 +30,7 @@
                     <input type="text" name="username" placeholder="Username">
                     <input type="text" name="password" placeholder="Password">
                     <br>
-                    <button type="submit" value="submit">LOG IN</button>
+                    <button type="submit" name="submit">LOG IN</button>
                 </form>
             </div>
             
