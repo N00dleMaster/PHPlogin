@@ -18,7 +18,32 @@ class SignupController {
         $this->email = $email;
     }
 
-    // Methods - Checks to see if all properties are set
+    // Ultimate error handler function, implements all the ones below
+    private function signupUser() {
+        if($this->emptyInput() == false) {
+            header("location: ../index.php?error=emptyinput");
+            exit(); // exits script
+        } else if ($this->invalidUsername() == false) {
+            header("location: ../index.php?error=invalidusername");
+            exit();
+        } else if ($this->invalidEmail() == false) {
+            header("location: ../index.php?error=invalidusername");
+            exit();
+        } else if ($this->passwordsMatch() == false) {
+            header("location: ../index.php?error=invalidusername");
+            exit();
+        } else if ($this->usernameTaken() == false) {
+            header("location: ../index.php?error=invalidusername");
+            exit();
+        }
+
+        $this->setUser(); // in signup.classes.php because this is where we interact with the db
+    }
+
+
+
+
+    // Checks to see if all properties are set
         // Returns boolean value
     private function emptyInput() {
         $result;
@@ -30,7 +55,7 @@ class SignupController {
         return $result;
     }
 
-    // Methods - Checks to see if username is valid
+    // Checks to see if username is valid
         // Returns boolean value
         // only allows certain characters in username (verified using a regex)
     private function invalidUsername() {
@@ -43,7 +68,7 @@ class SignupController {
         return $result;
     }
 
-    // Methods - Checks to see if email is valid
+    // Checks to see if email is valid
         // Returns boolean value
         // Verified email using regex built into php for emails
     private function invalidEmail() {
@@ -56,7 +81,7 @@ class SignupController {
         return $result;
     }
 
-    // Methods - Check if passwords match
+    // Check if passwords match
         // returns boolean
     private function passwordsMatch() {
         $result;
@@ -67,5 +92,20 @@ class SignupController {
         }
         return $result;
     }
+
+    // Checks to see if username is already in use
+        // Returns boolean value
+        // Checks to see if username is already in use in the db
+    private function usernameTaken() {
+        $result;
+        if(!$this->checkUser($this->username, $this->email)) { // We are making use of the method made in signup.classes.php
+            $result = true;
+        } else {
+            $result = false;
+        }
+        return $result;
+    }
+
+
 
 }
