@@ -1,5 +1,5 @@
 <?php
-// SignupController is for changing things in the db
+// SignupController is for changing surface level verification and stuff
 
 
 class SignupController {
