@@ -24,7 +24,21 @@
                 <li><a href="login.php">Log In</a></li>
             </ul>
             <ul class="menu member">
-                <li><a href="#">Sign Up</a></li>
-                <li><a href="#">Log In</a></li>
+                <!-- A note that php tags work a lot like EJS tags in node. -->
+                <?php
+                    // If user is logged in, show username and logout button
+                    if(isset($_SESSION["_id"])) {
+                ?>
+                        <li><a href="profile.php"><?php echo $_SESSION["username"]; ?></a></li>
+                        <li><a href="logout.php">Log Out</a></li>
+                <?php
+                    // If user is not logged in, show login and sign up buttons
+                    } else {
+                ?>
+                        <li><a href="#">Sign Up</a></li>
+                        <li><a href="#">Log In</a></li>
+                <?php
+                    }
+                ?>
             </ul>
         </nav>
