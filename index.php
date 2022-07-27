@@ -28,7 +28,7 @@
                 <form class="index-forms-login form" action="includes/login.inc.php" method="post">
                     <h3>Log in</h3>
                     <input type="text" name="username" placeholder="Username">
-                    <input type="text" name="password" placeholder="Password">
+                    <input type="password" name="password" placeholder="Password">
                     <br>
                     <button type="submit" name="submit">LOG IN</button>
                 </form>
