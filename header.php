@@ -29,10 +29,10 @@
                     // You must explicitly start a session before accessing anything in $_SESSION.
                     session_start();
                     // If user is logged in, show username and logout button
-                    if(isset($_SESSION)) {
+                    if(isset($_SESSION["username"])) {
                 ?>
                         <li><a href="profile.php"><?php echo $_SESSION["username"]; ?></a></li>
-                        <li><a href="logout.php">Log Out</a></li>
+                        <li><a href="includes/logout.inc.php">Log Out</a></li>
                 <?php
                     // If user is not logged in, show login and sign up buttons
                     } else {
