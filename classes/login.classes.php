@@ -22,31 +22,36 @@ class Login extends DBH {
         }
 
         // If no rows returned (user not found)
-        if(statement->rowCount() == 0) {
+        if($statement->rowCount() == 0) {
             $statement = null;
             header("location: ../index.php?error=usernotfound");
             exit();
         }
 
+        // Store the results of the db in a results variable, so we don't have to retype this
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC)[0]; // fetchAll() returns an array of arrays, each array containing a row of data 
+
         // If everything is in order, take the hashed password from db, hash the password the user entered, and compare the two
-        $hashedPass = $statement->fetchAll(PDO::FETCH_ASSOC)[0]['password']; // fetchAll() returns an array of arrays, each array containing a row of data (an associative array, set by the parameter)
+        $hashedPass = $results["password"]; 
         $checkPass = password_verify($password, $hashedPass); // password_verify() is a built-in php function that hashes the password and compares it to the hashed password in the db
-        
+
         // Then use $checkPass to see if passwords match or not. Perform appropriate actions
-        if(!checkPass) {
+        if(!$checkPass) {
             $statement = null;
             header("location: ../index.php?error=wrongpassword");
             exit();
         } else {
             // If the password matched, set the session variables and redirect to the home page
-            $user = $statement->fetchAll(PDO::FETCH_ASSOC)[0]; // fetchAll() returns an array of arrays, each array contained a row of data
-            session_start(); // This is used to start a user session in php
-            $_SESSION["_id"] = $user["_id"]; // Set session superglobal variables
-            $_SESSION["username"] = $user["username"];
-            $_SESSION["email"] = $user["email"];
+            $user = $results;
+            session_start(); // This is used to start a user session (send cookie to browser) in php
+            $_SESSION["_id"] = $results["_id"]; // Set session superglobal variables
+            $_SESSION["username"] = $results["username"];
+            $_SESSION["email"] = $results["email"];
 
-            // Set statement to null anyway
+            // Set statement to null
             $statement = null;
+
+            // Redirect to home page and exit
             header("location: ../index.php?error=none");
             exit();
         }

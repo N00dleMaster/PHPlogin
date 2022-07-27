@@ -21,7 +21,7 @@ if(isset($_POST["username"]) && isset($_POST["password"])) {
     include "../classes/databasehandler.classes.php";
     include "../classes/login.classes.php";
     include "../classes/logincontroller.classes.php";
-    $signup = new LoginController($username, $password);
+    $login = new LoginController($username, $password);
 
     // Running error handlers and user signup
     $login->loginUser();

@@ -26,8 +26,10 @@
             <ul class="menu member">
                 <!-- A note that php tags work a lot like EJS tags in node. -->
                 <?php
+                    // You must explicitly start a session before accessing anything in $_SESSION.
+                    session_start();
                     // If user is logged in, show username and logout button
-                    if(isset($_SESSION["_id"])) {
+                    if(isset($_SESSION)) {
                 ?>
                         <li><a href="profile.php"><?php echo $_SESSION["username"]; ?></a></li>
                         <li><a href="logout.php">Log Out</a></li>
